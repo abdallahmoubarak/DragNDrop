@@ -1,10 +1,9 @@
-import DndExample from "@/components/DndExample";
-
+import DragNDrop from "@/components/DragNDrop";
 
 export default function Home() {
   return (
     <div>
-      <DndExample />
+      <DragNDrop />
     </div>
-  )
+  );
 }

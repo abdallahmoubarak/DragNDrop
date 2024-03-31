@@ -1,15 +1,19 @@
 "use client";
 import { cardsData } from "@/bin/CardsData";
 import { useEffect, useState } from "react";
-import { Draggable, DropResult, Droppable } from "react-beautiful-dnd";
+import {
+  DragDropContext,
+  Draggable,
+  DropResult,
+  Droppable,
+} from "react-beautiful-dnd";
 import LoadingSkeleton from "./LoadingSkeleton";
-import { DndContext } from "@/context/DndContext";
 import { FiMove } from "react-icons/fi";
 interface Cards {
   id: number;
   name: string;
 }
-export default function DndExample() {
+export default function DragNDrop() {
   const [data, setData] = useState<Cards[]>([]);
 
   const onDragEnd = (result: DropResult) => {
@@ -40,7 +44,7 @@ export default function DndExample() {
   }
 
   return (
-    <DndContext onDragEnd={onDragEnd}>
+    <DragDropContext onDragEnd={onDragEnd}>
       <div className="flex gap-4 justify-between my-20 mx-4 flex-col lg:flex-row">
         <Droppable droppableId="1">
           {(provided) => (
@@ -74,6 +78,6 @@ export default function DndExample() {
           )}
         </Droppable>
       </div>
-    </DndContext>
+    </DragDropContext>
   );
 }
